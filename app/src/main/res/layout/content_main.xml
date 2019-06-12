@@ -6,39 +6,31 @@
                                              android:layout_height="match_parent"
                                              app:layout_behavior="@string/appbar_scrolling_view_behavior"
                                              tools:context=".MainActivity"
-                                             tools:showIn="@layout/app_bar_main">
+                                             tools:showIn="@layout/app_bar_main"
+                                             android:background="@drawable/boundary">
 
-    <ImageView
-            android:layout_height="wrap_content"
-            android:id="@+id/boundaryBackground" android:adjustViewBounds="false" android:fitsSystemWindows="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:scaleType="centerCrop" android:layout_width="wrap_content"
-            android:contentDescription="@string/voice_of_cricket_background"
-            app:layout_constraintVertical_bias="0.00999999" app:layout_constraintEnd_toEndOf="parent"
-            tools:srcCompat="@drawable/boundary" android:background="#00FFFFFF"/>
-    <ImageButton
-            android:layout_width="330dp"
-            android:layout_height="74dp" app:srcCompat="@drawable/startbutton" android:id="@+id/startStopButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="54dp" android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toEndOf="@+id/boundaryBackground" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@+id/boundaryBackground"
-            android:contentDescription="@string/start_stop_button"/>
-    <Spinner
-            android:layout_width="395dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner" app:layout_constraintStart_toEndOf="@+id/boundaryBackground"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/boundaryBackground"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="193dp"/>
-    <TextView
-            android:text="TextView"
-            android:layout_width="275dp"
-            android:layout_height="170dp"
-            android:id="@+id/scoreTextView"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="178dp"
-            app:layout_constraintStart_toEndOf="@+id/boundaryBackground" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@+id/boundaryBackground"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:gravity="center">
+        <TextView
+                android:text="Match information appears here"
+                android:layout_width="275dp"
+                android:layout_height="83dp"
+                android:id="@+id/scoreTextView"
+                android:layout_marginBottom="178dp"
+                app:fontFamily="@font/montserrat_bold" android:textSize="18sp"
+                android:textColor="@android:color/white"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/spinner"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/startbutton"
+                android:id="@+id/startStopButton"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/start_stop_button" android:adjustViewBounds="true"
+                android:cropToPadding="false"/>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
