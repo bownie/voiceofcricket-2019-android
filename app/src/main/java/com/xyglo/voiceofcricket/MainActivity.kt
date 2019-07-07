@@ -11,9 +11,18 @@ import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
+import java.net.URL
+import java.net.HttpURLConnection
+import CricketMatchesTask
+import LoadCricketMatches
+import android.os.AsyncTask
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    companion object {
+        private var thing = ""
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +46,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+
+        //sendGet()
     }
 
     override fun onBackPressed() {
@@ -90,4 +101,103 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    fun sendGet() {
+        val url = URL("http://www.google.com/")
+
+        //CricketMatchTask().execute(url)
+
+        // Attempt 1
+        //
+        /*
+        Thread({
+            //Do some Network Request
+
+            runOnUiThread({
+                //Update UI
+
+                with(url.openConnection() as HttpURLConnection) {
+                    requestMethod = "GET"  // optional default is GET
+
+                    //println("\nSent 'GET' request to URL : $url; Response Code : $responseCode")
+                    inputStream.bufferedReader().use {
+                        it.lines().forEach { line ->
+                            //MainActivity.thing += line
+                            //println(line)
+                        }
+                    }
+                }
+            })
+        }).start()
+*/
+/*
+        // Attempt 2
+        loadingProducts = object : CricketMatchesTask() {
+            override fun onPostExecute(result: String?) {
+                super.onPostExecute(result)
+
+                Log.e("Result", result)
+            }
+        }
+
+        loadingProducts.execute()
+        */
+
+        // Attempt 3
+        //
+        /*
+        CricketMatchesTask {
+
+
+        }*/
+
+        // Attempt 4
+        //
+        /*
+        LoadCricketMatches(object : BaseAsyncTask.ProgressListener {
+            override fun onStarted() {
+                //Show Progrss Bar
+                //loadingBar.visibility = View.VISIBLE
+                println("onStarted")
+            }
+
+            override fun onCompleted() {
+                // hide progress bar
+                //loadingBar.visibility = View.GONE
+                // update UI on SUCCESS
+                //setUpUI()
+                println("onCompleted")
+            }
+
+            override fun onError(errorMessage: String?) {
+                // hide progress bar
+                //loadingBar.visibility = View.GONE
+                // Update UI on ERROR
+                //Toast.makeText(context, "No Videos Found", Toast.LENGTH_SHORT).show()
+                println("onError")
+            }
+
+        }).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
+        */
+
+        // Attempt 5
+        //
+        //CricketMatchesTask().execute()
+    }
+
+    /*
+    // Attempt 6
+    fun downloadData() {
+        doAsync {
+            //Execute all the lon running tasks here
+            val s: String = makeNetworkCall()
+            uiThread {
+                //Update the UI thread here
+                alert("Downloaded data is $s", "Hi I'm an alert") {
+                    yesButton { toast("Yay !") }
+                    noButton { toast(":( !") }
+                }.show()
+            }
+        }
+    }*/
 }
