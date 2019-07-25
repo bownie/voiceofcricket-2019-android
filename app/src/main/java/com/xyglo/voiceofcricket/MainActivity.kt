@@ -16,6 +16,9 @@ import java.net.HttpURLConnection
 import CricketMatchesTask
 import LoadCricketMatches
 import android.os.AsyncTask
+import android.widget.Toast
+import kotlinx.android.synthetic.main. activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -45,8 +48,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        navView.setNavigationItemSelectedListener(this)
+        this.startStopButton.setOnClickListener() {
+            Toast.makeText(this@MainActivity, "You clicked me.", Toast.LENGTH_SHORT).show()
+        }
 
+        navView.setNavigationItemSelectedListener(this)
+/*
+        async {
+            val result = URL("url").readText()
+            uiThread {
+                mainTextView.setText(result)
+            }
+        }
+        */
         //sendGet()
     }
 
@@ -200,4 +214,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
     }*/
+
+/*
+    fun setOnClickListener(){
+        Toast.makeText(this@MainActivity, "Its toast!", Toast.LENGTH_SHORT).show();
+    }
+*/
+
+
 }

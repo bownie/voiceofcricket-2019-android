@@ -30,7 +30,7 @@
                 android:id="@+id/startStopButton"
                 android:scaleType="fitCenter"
                 android:contentDescription="@string/start_stop_button" android:adjustViewBounds="true"
-                android:cropToPadding="false"/>
+                android:cropToPadding="true" android:backgroundTint="#00FFFFFF"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
